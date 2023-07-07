@@ -1,10 +1,13 @@
 // controllers/skills.js
 
-const Skill = require('../models/skills');
+
 
 module.exports = {
-    index
+    index,
+    show,
   };
+
+const Skill = require('../models/skills');
 
 function index(req,res) {
     res.render('skills/index', {
@@ -12,3 +15,9 @@ function index(req,res) {
 
     });
 }
+
+function show(req, res) {
+    res.render('skills/show', {
+      skill: Skill.getOne(req.params.id),
+    });
+  }
